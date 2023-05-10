@@ -20,7 +20,6 @@
   {
    "fieldname": "department_name",
    "fieldtype": "Data",
-   "in_list_view": 1,
    "label": "Department",
    "oldfieldname": "department_name",
    "oldfieldtype": "Data",
@@ -30,6 +29,8 @@
   {
    "fieldname": "parent_department",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Parent Department",
    "options": "Department"
   },
@@ -69,7 +70,7 @@
  "icon": "fa fa-sitemap",
  "is_tree": 1,
  "links": [],
- "modified": "2023-05-10 18:20:49.827029",
+ "modified": "2023-05-10 18:44:46.441210",
  "modified_by": "Administrator",
  "module": "Moi",
  "name": "Department",
