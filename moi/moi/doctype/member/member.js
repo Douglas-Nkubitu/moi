@@ -2,7 +2,14 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Member', {
-	// refresh: function(frm) {
+	refresh: function(frm) {
+		frm.set_query("department", () => {
+			return {
+				filters: {
+					is_group: 0,
+				}
+			}
+		});
 
-	// }
+	}
 });

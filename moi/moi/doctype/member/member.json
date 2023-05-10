@@ -20,6 +20,7 @@
   "full_name",
   "salutation",
   "assembly",
+  "assembly_region",
   "department",
   "gender",
   "amended_from"
@@ -46,7 +47,8 @@
    "fieldtype": "Data",
    "label": "Last Name",
    "oldfieldname": "last_name",
-   "oldfieldtype": "Data"
+   "oldfieldtype": "Data",
+   "reqd": 1
   },
   {
    "fieldname": "salutation",
@@ -69,8 +71,9 @@
   },
   {
    "fieldname": "department",
-   "fieldtype": "Data",
-   "label": "Department"
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
   },
   {
    "fieldname": "amended_from",
@@ -124,13 +127,20 @@
    "oldfieldname": "email_id",
    "oldfieldtype": "Data",
    "search_index": 1
+  },
+  {
+   "fetch_from": "assembly.assembly_region",
+   "fieldname": "assembly_region",
+   "fieldtype": "Data",
+   "label": "Assembly Region",
+   "read_only": 1
   }
  ],
  "icon": "fa fa-user",
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-05-10 18:01:04.961833",
+ "modified": "2023-05-10 23:39:20.317204",
  "modified_by": "Administrator",
  "module": "Moi",
  "name": "Member",
@@ -157,6 +167,5 @@
  "sort_order": "ASC",
  "states": [],
  "title_field": "full_name",
- "track_changes": 1,
- "track_seen": 1
+ "track_changes": 1
 }
