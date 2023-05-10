@@ -1,0 +1,162 @@
+{
+ "actions": [],
+ "allow_events_in_timeline": 1,
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-05-10 17:13:42.148126",
+ "default_view": "List",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "first_name",
+  "middle_name",
+  "last_name",
+  "age",
+  "mobile_no",
+  "email",
+  "column_break_nn7qd",
+  "full_name",
+  "salutation",
+  "assembly",
+  "department",
+  "gender",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "label": "First Name",
+   "oldfieldname": "first_name",
+   "oldfieldtype": "Data",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "middle_name",
+   "fieldtype": "Data",
+   "label": "Middle Name"
+  },
+  {
+   "bold": 1,
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name",
+   "oldfieldname": "last_name",
+   "oldfieldtype": "Data"
+  },
+  {
+   "fieldname": "salutation",
+   "fieldtype": "Link",
+   "label": "Salutation",
+   "options": "Salutation"
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Link",
+   "label": "Gender",
+   "options": "Gender"
+  },
+  {
+   "fieldname": "mobile_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Mobile No",
+   "reqd": 1
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "label": "Department"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Member",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "assembly",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Assembly",
+   "options": "Assembly"
+  },
+  {
+   "fieldname": "column_break_nn7qd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "age",
+   "fieldtype": "Int",
+   "label": "Age"
+  },
+  {
+   "default": "MOI-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "series",
+   "options": "MOI-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "label": "Full Name",
+   "read_only": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Email Address",
+   "oldfieldname": "email_id",
+   "oldfieldtype": "Data",
+   "search_index": 1
+  }
+ ],
+ "icon": "fa fa-user",
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-05-10 18:01:04.961833",
+ "modified_by": "Administrator",
+ "module": "Moi",
+ "name": "Member",
+ "name_case": "Title Case",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "set_user_permissions": 1,
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "ASC",
+ "states": [],
+ "title_field": "full_name",
+ "track_changes": 1,
+ "track_seen": 1
+}
