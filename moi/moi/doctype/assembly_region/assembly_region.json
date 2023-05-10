@@ -1,41 +1,31 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:assembly",
- "creation": "2023-05-10 17:56:10.281351",
+ "autoname": "field:assembly_region",
+ "creation": "2023-05-10 18:29:36.987662",
  "default_view": "List",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "assembly",
   "assembly_region"
  ],
  "fields": [
   {
-   "bold": 1,
-   "fieldname": "assembly",
+   "fieldname": "assembly_region",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Assembly",
+   "label": "Assembly Region",
    "reqd": 1,
    "unique": 1
-  },
-  {
-   "fieldname": "assembly_region",
-   "fieldtype": "Link",
-   "label": "Assembly Region",
-   "options": "Assembly Region",
-   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-10 18:29:59.961084",
+ "modified": "2023-05-10 18:29:36.987662",
  "modified_by": "Administrator",
  "module": "Moi",
- "name": "Assembly",
+ "name": "Assembly Region",
  "name_case": "Title Case",
  "naming_rule": "By fieldname",
  "owner": "Administrator",
