@@ -2,14 +2,14 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "field:department_name",
- "creation": "2023-05-10 18:19:42.251360",
+ "autoname": "field:group_name",
+ "creation": "2023-05-20 02:12:35.392923",
  "default_view": "List",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "department_name",
-  "parent_department",
+  "group_name",
+  "parent_member_group",
   "column_break_3",
   "is_group",
   "disabled",
@@ -19,21 +19,22 @@
  ],
  "fields": [
   {
-   "fieldname": "department_name",
+   "fieldname": "group_name",
    "fieldtype": "Data",
-   "label": "Department",
+   "in_list_view": 1,
+   "label": "Member Group",
    "oldfieldname": "department_name",
    "oldfieldtype": "Data",
    "reqd": 1,
    "unique": 1
   },
   {
-   "fieldname": "parent_department",
+   "fieldname": "parent_member_group",
    "fieldtype": "Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Parent Department",
-   "options": "Department"
+   "label": "Parent Group",
+   "options": "Member Group"
   },
   {
    "fieldname": "column_break_3",
@@ -70,19 +71,21 @@
   {
    "fieldname": "old_parent",
    "fieldtype": "Data",
+   "hidden": 1,
+   "ignore_user_permissions": 1,
    "label": "Old Parent"
   }
  ],
  "icon": "fa fa-sitemap",
  "is_tree": 1,
  "links": [],
- "modified": "2023-05-20 02:15:47.981023",
+ "modified": "2023-05-20 02:12:35.392923",
  "modified_by": "Administrator",
  "module": "Moi",
- "name": "Department",
+ "name": "Member Group",
  "name_case": "Title Case",
  "naming_rule": "By fieldname",
- "nsm_parent_field": "parent_department",
+ "nsm_parent_field": "parent_member_group",
  "owner": "Administrator",
  "permissions": [
   {
