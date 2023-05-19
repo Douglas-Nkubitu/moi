@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "MoI-.#####",
  "creation": "2023-05-19 22:35:41.657003",
  "default_view": "List",
  "doctype": "DocType",
@@ -91,15 +92,17 @@
    "fieldname": "event_name",
    "fieldtype": "Data",
    "hidden": 1,
-   "label": "Event Name"
+   "label": "Event Name",
+   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-19 22:44:36.287037",
+ "modified": "2023-05-20 00:02:37.168825",
  "modified_by": "Administrator",
  "module": "Moi",
  "name": "Event Registration",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {

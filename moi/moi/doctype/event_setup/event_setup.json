@@ -14,6 +14,7 @@
   "event_type",
   "event_location",
   "meeting_link",
+  "event_registration_link",
   "column_break_dzc3u",
   "starts_on",
   "ends_on",
@@ -141,13 +142,18 @@
    "options": "Event Setup",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "event_registration_link",
+   "fieldtype": "Data",
+   "label": "Event Registration Link"
   }
  ],
  "has_web_view": 1,
  "is_published_field": "is_published",
  "is_submittable": 1,
  "links": [],
- "modified": "2023-05-19 23:15:39.984212",
+ "modified": "2023-05-20 00:09:24.359317",
  "modified_by": "Administrator",
  "module": "Moi",
  "name": "Event Setup",
