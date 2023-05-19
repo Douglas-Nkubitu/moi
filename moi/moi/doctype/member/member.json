@@ -10,6 +10,7 @@
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
+  "full_name",
   "first_name",
   "middle_name",
   "last_name",
@@ -17,7 +18,7 @@
   "mobile_no",
   "email",
   "column_break_nn7qd",
-  "full_name",
+  "member_group",
   "salutation",
   "assembly",
   "assembly_region",
@@ -134,13 +135,21 @@
    "fieldtype": "Data",
    "label": "Assembly Region",
    "read_only": 1
+  },
+  {
+   "fieldname": "member_group",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Member Group",
+   "options": "Member Group"
   }
  ],
  "icon": "fa fa-user",
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-05-10 23:39:20.317204",
+ "modified": "2023-05-20 02:32:25.530241",
  "modified_by": "Administrator",
  "module": "Moi",
  "name": "Member",

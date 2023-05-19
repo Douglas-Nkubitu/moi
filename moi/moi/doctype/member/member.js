@@ -11,5 +11,13 @@ frappe.ui.form.on('Member', {
 			}
 		});
 
+		frm.set_query("member_group", () => {
+			return {
+				filters: {
+					is_group: 0,
+				}
+			}
+		});
+
 	}
 });
