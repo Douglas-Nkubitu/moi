@@ -1,0 +1,116 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"CAWKIfIbqX\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\",\"col\":12}},{\"id\":\"Tg65A5JCIX\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member\",\"col\":3}},{\"id\":\"z7yGrL93YU\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Assembly\",\"col\":3}},{\"id\":\"lpjtG-Jovi\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Assembly Region\",\"col\":3}},{\"id\":\"36bwS5pYgk\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Report &amp; Masters</b></span>\",\"col\":12}},{\"id\":\"TJcikHt9D7\",\"type\":\"card\",\"data\":{\"card_name\":\"Events\",\"col\":4}},{\"id\":\"8oDubFb8Q6\",\"type\":\"card\",\"data\":{\"card_name\":\"MoI Category\",\"col\":4}}]",
+ "creation": "2023-05-20 01:11:56.102812",
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "card",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "MoI",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Events",
+   "link_count": 2,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Event Setup",
+   "link_count": 0,
+   "link_to": "Event Setup",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Event Registration",
+   "link_count": 0,
+   "link_to": "Event Registration",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "MoI Category",
+   "link_count": 3,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Member",
+   "link_count": 0,
+   "link_to": "Member",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Assembly",
+   "link_count": 0,
+   "link_to": "Assembly",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Assembly Region",
+   "link_count": 0,
+   "link_to": "Assembly Region",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2023-05-20 01:26:15.334426",
+ "modified_by": "Administrator",
+ "module": "Moi",
+ "name": "MoI",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 30.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Assembly",
+   "link_to": "Assembly",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Member",
+   "link_to": "Member",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Assembly Region",
+   "link_to": "Assembly Region",
+   "type": "DocType"
+  }
+ ],
+ "title": "MoI"
+}
