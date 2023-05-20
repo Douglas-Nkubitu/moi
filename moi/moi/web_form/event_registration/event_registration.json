@@ -21,7 +21,7 @@
  "max_attachment_size": 0,
  "meta_description": "",
  "meta_title": "",
- "modified": "2023-05-20 00:23:22.189757",
+ "modified": "2023-05-20 10:00:51.416540",
  "modified_by": "Administrator",
  "module": "Moi",
  "name": "event-registration",
@@ -31,8 +31,8 @@
  "show_attachments": 0,
  "show_list": 0,
  "show_sidebar": 0,
- "success_message": "",
- "success_title": "",
+ "success_message": "Thank you for spending your valuable time to fill this form",
+ "success_title": "Submitted Successfully",
  "title": "Event Registration",
  "web_form_fields": [
   {

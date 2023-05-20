@@ -105,12 +105,12 @@
    "label": "Age"
   },
   {
-   "default": "MOI-.YYYY.-",
+   "default": "CITAM-.YYYY.-",
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "hidden": 1,
    "label": "series",
-   "options": "MOI-.YYYY.-",
+   "options": "CITAM-.YYYY.-",
    "reqd": 1
   },
   {
@@ -129,6 +129,7 @@
    "label": "Email Address",
    "oldfieldname": "email_id",
    "oldfieldtype": "Data",
+   "reqd": 1,
    "search_index": 1
   },
   {
@@ -156,9 +157,8 @@
  ],
  "icon": "fa fa-user",
  "index_web_pages_for_search": 1,
- "is_submittable": 1,
  "links": [],
- "modified": "2023-05-20 09:45:09.271698",
+ "modified": "2023-05-20 10:13:05.694732",
  "modified_by": "Administrator",
  "module": "Moi",
  "name": "Member",
