@@ -91,7 +91,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Events",
-   "link_count": 2,
+   "link_count": 3,
    "onboard": 0,
    "type": "Card Break"
   },
@@ -114,9 +114,19 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Conference Registration",
+   "link_count": 0,
+   "link_to": "Conference Registration",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2023-05-20 11:08:05.688178",
+ "modified": "2023-05-20 11:27:57.737448",
  "modified_by": "Administrator",
  "module": "Moi",
  "name": "CITAM",

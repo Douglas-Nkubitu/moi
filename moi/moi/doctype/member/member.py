@@ -19,3 +19,6 @@ class Member(Document):
 
 	def validate_email(self):
 		validate_email_address(self.email.strip(), True)
+
+def after_insert(self):
+	frappe.sendmail(recipients=[self.email], message="Thank you for registering!")
