@@ -19,6 +19,7 @@
   "email",
   "column_break_nn7qd",
   "member_group",
+  "designation",
   "salutation",
   "assembly",
   "assembly_region",
@@ -91,7 +92,8 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Assembly",
-   "options": "Assembly"
+   "options": "Assembly",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_nn7qd",
@@ -143,13 +145,20 @@
    "in_standard_filter": 1,
    "label": "Member Group",
    "options": "Member Group"
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Link",
+   "label": "Designation",
+   "options": "Designation",
+   "reqd": 1
   }
  ],
  "icon": "fa fa-user",
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-05-20 02:32:25.530241",
+ "modified": "2023-05-20 09:45:09.271698",
  "modified_by": "Administrator",
  "module": "Moi",
  "name": "Member",
