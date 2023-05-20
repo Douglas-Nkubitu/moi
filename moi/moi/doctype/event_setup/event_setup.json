@@ -14,27 +14,29 @@
   "event_type",
   "event_location",
   "meeting_link",
-  "event_registration_link",
   "column_break_dzc3u",
   "starts_on",
   "ends_on",
   "status",
+  "event_registration_link",
   "section_break_rhyz0",
   "description",
   "speakers_details_section",
   "speaker",
   "speaker_name",
+  "column_break_dekq2",
   "speaker_title",
   "speaker_company",
   "section_break_rzsok",
-  "route",
   "is_published",
+  "column_break_eai19",
+  "route",
   "amended_from"
  ],
  "fields": [
   {
    "fieldname": "subject",
-   "fieldtype": "Small Text",
+   "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Subject",
    "reqd": 1
@@ -43,14 +45,15 @@
    "fieldname": "event_category",
    "fieldtype": "Select",
    "label": "Event Category",
-   "options": "Meeting\nCall\nSent/Received Email\nOther"
+   "options": "\nMeeting\nSeminar\nWorkshop\nConference",
+   "reqd": 1
   },
   {
    "fieldname": "event_type",
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Event Type",
-   "options": "Private\nPublic\nCancelled",
+   "options": "\nPrivate\nPublic\nCancelled",
    "reqd": 1
   },
   {
@@ -82,8 +85,8 @@
   {
    "fieldname": "status",
    "fieldtype": "Select",
-   "label": "Status",
-   "options": "Open\nCompleted\nClosed"
+   "label": "Event Status",
+   "options": "Scheduled\nCompleted\nCancelled"
   },
   {
    "fieldname": "section_break_rhyz0",
@@ -147,13 +150,21 @@
    "fieldname": "event_registration_link",
    "fieldtype": "Data",
    "label": "Event Registration Link"
+  },
+  {
+   "fieldname": "column_break_dekq2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_eai19",
+   "fieldtype": "Column Break"
   }
  ],
  "has_web_view": 1,
  "is_published_field": "is_published",
  "is_submittable": 1,
  "links": [],
- "modified": "2023-05-20 00:09:24.359317",
+ "modified": "2023-05-20 10:55:06.012573",
  "modified_by": "Administrator",
  "module": "Moi",
  "name": "Event Setup",

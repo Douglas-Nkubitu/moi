@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"CAWKIfIbqX\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\",\"col\":12}},{\"id\":\"Tg65A5JCIX\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member\",\"col\":3}},{\"id\":\"QPASmdkczM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Department\",\"col\":3}},{\"id\":\"z7yGrL93YU\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Assembly\",\"col\":3}},{\"id\":\"lpjtG-Jovi\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Assembly Region\",\"col\":3}},{\"id\":\"36bwS5pYgk\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Report &amp; Masters</b></span>\",\"col\":12}},{\"id\":\"wIYL3paMHM\",\"type\":\"card\",\"data\":{\"card_name\":\"Stakeholders\",\"col\":4}},{\"id\":\"TJcikHt9D7\",\"type\":\"card\",\"data\":{\"card_name\":\"Events\",\"col\":4}},{\"id\":\"8oDubFb8Q6\",\"type\":\"card\",\"data\":{\"card_name\":\"Structure\",\"col\":4}}]",
+ "content": "[{\"id\":\"CAWKIfIbqX\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\",\"col\":12}},{\"id\":\"Tg65A5JCIX\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Member\",\"col\":3}},{\"id\":\"QPASmdkczM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Department\",\"col\":3}},{\"id\":\"z7yGrL93YU\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Assembly\",\"col\":3}},{\"id\":\"lpjtG-Jovi\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Assembly Region\",\"col\":3}},{\"id\":\"36bwS5pYgk\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Report &amp; Masters</b></span>\",\"col\":12}},{\"id\":\"wIYL3paMHM\",\"type\":\"card\",\"data\":{\"card_name\":\"Member\",\"col\":4}},{\"id\":\"TJcikHt9D7\",\"type\":\"card\",\"data\":{\"card_name\":\"Events\",\"col\":4}},{\"id\":\"8oDubFb8Q6\",\"type\":\"card\",\"data\":{\"card_name\":\"Assembly\",\"col\":4}}]",
  "creation": "2023-05-20 01:11:56.102812",
  "docstatus": 0,
  "doctype": "Workspace",
@@ -14,17 +14,17 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Events",
-   "link_count": 2,
+   "label": "Member",
+   "link_count": 4,
    "onboard": 0,
    "type": "Card Break"
   },
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Event Setup",
+   "label": "Member",
    "link_count": 0,
-   "link_to": "Event Setup",
+   "link_to": "Member",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -32,9 +32,9 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Event Registration",
+   "label": "Designation",
    "link_count": 0,
-   "link_to": "Event Registration",
+   "link_to": "Designation",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -42,20 +42,30 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Structure",
-   "link_count": 3,
+   "label": "Member Group",
+   "link_count": 0,
+   "link_to": "Member Group",
+   "link_type": "DocType",
    "onboard": 0,
-   "type": "Card Break"
+   "type": "Link"
   },
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Departments",
+   "label": "Department",
    "link_count": 0,
    "link_to": "Department",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Assembly",
+   "link_count": 2,
+   "onboard": 0,
+   "type": "Card Break"
   },
   {
    "hidden": 0,
@@ -80,17 +90,17 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Stakeholders",
-   "link_count": 3,
+   "label": "Events",
+   "link_count": 2,
    "onboard": 0,
    "type": "Card Break"
   },
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Member",
+   "label": "Event Setup",
    "link_count": 0,
-   "link_to": "Member",
+   "link_to": "Event Setup",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -98,25 +108,15 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Member Group",
+   "label": "Workshop Registration",
    "link_count": 0,
-   "link_to": "Member Group",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Designation",
-   "link_count": 0,
-   "link_to": "Designation",
+   "link_to": "Workshop Registration",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
   }
  ],
- "modified": "2023-05-20 09:42:48.766113",
+ "modified": "2023-05-20 11:08:05.688178",
  "modified_by": "Administrator",
  "module": "Moi",
  "name": "CITAM",
