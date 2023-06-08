@@ -90,8 +90,6 @@
   {
    "fieldname": "assembly",
    "fieldtype": "Link",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
    "label": "Assembly",
    "options": "Assembly",
    "reqd": 1
@@ -150,8 +148,11 @@
   {
    "fieldname": "moi_small_group",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "MoI Small Group",
-   "options": "MoI Small Group"
+   "options": "MoI Small Group",
+   "reqd": 1
   },
   {
    "fieldname": "age_group",
@@ -164,7 +165,7 @@
  "icon": "fa fa-user",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-08 16:56:58.214703",
+ "modified": "2023-06-09 01:36:58.673649",
  "modified_by": "Administrator",
  "module": "Moi",
  "name": "Member",

@@ -20,5 +20,11 @@ class Member(Document):
 	def validate_email(self):
 		validate_email_address(self.email.strip(), True)
 
-def after_insert(self):
-	frappe.sendmail(recipients=[self.email], message="Thank you for registering!")
+@frappe.whitelist()
+def assign_group(age_group):
+	# Fetch the team_name based on the age_group
+	team_name = frappe.db.get_value('MoI Small Group', {'age_group': age_group}, 'team_name')
+
+	return {
+		'team_name': team_name
+	}

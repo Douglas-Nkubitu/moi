@@ -22,7 +22,7 @@ frappe.ui.form.on('Member', {
 });
 
 frappe.ui.form.on('Member', {
-    after_insert: function (frm) {
+	after_save: function (frm) {
         send_sms(frm);
     }
 });
@@ -45,3 +45,25 @@ var send_sms = function (frm) {
 		}
 	});
 }
+
+frappe.ui.form.on('Member', {
+    age_group: function(frm) {
+        // Get the selected age_group from the Member DocType
+        var ageGroup = frm.doc.age_group;
+
+        // Make an AJAX request to fetch the team_name based on the age_group
+        frappe.call({
+            method: 'moi.moi.doctype.member.member.assign_group',
+            args: {
+                age_group: ageGroup
+            },
+            callback: function(response) {
+                // Handle the response
+                if (response && response.message) {
+                    // Update the moi_small_group field in the Member DocType
+                    frm.set_value('moi_small_group', response.message.team_name);
+                }
+            }
+        });
+    }
+});
