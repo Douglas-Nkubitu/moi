@@ -1,0 +1,185 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:team_name",
+ "creation": "2023-06-08 15:30:33.962196",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "team_name",
+  "age_group",
+  "column_break_0mvt9",
+  "small_group_whatsapp_link",
+  "moi_whatsapp_link",
+  "section_break_wjel6",
+  "leader",
+  "team_leader",
+  "leader_phone_number",
+  "leader_email",
+  "column_break_nvqhm",
+  "deputy",
+  "team_deputy",
+  "deputy_phone_number",
+  "deputy_email",
+  "column_break_wfuxs",
+  "exco",
+  "team_exco",
+  "exco_phone_number",
+  "exco_email"
+ ],
+ "fields": [
+  {
+   "fieldname": "team_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Team Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "section_break_wjel6",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "leader.full_name",
+   "fieldname": "team_leader",
+   "fieldtype": "Data",
+   "label": "Team Leader",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "leader.mobile_no",
+   "fieldname": "leader_phone_number",
+   "fieldtype": "Data",
+   "label": "Leader Phone Number",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "leader.email",
+   "fieldname": "leader_email",
+   "fieldtype": "Data",
+   "label": "Leader Email",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_nvqhm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "deputy.full_name",
+   "fieldname": "team_deputy",
+   "fieldtype": "Data",
+   "label": "Team Deputy",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "deputy.mobile_no",
+   "fieldname": "deputy_phone_number",
+   "fieldtype": "Data",
+   "label": "Deputy Phone Number",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "deputy.email",
+   "fieldname": "deputy_email",
+   "fieldtype": "Data",
+   "label": "Deputy Email",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_wfuxs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "exco.full_name",
+   "fieldname": "team_exco",
+   "fieldtype": "Data",
+   "label": "Team Exco",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "exco.mobile_no",
+   "fieldname": "exco_phone_number",
+   "fieldtype": "Data",
+   "label": "Exco Phone Number",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "exco.email",
+   "fieldname": "exco_email",
+   "fieldtype": "Data",
+   "label": "Exco Email",
+   "read_only": 1
+  },
+  {
+   "fieldname": "leader",
+   "fieldtype": "Link",
+   "label": "Leader ID",
+   "options": "Member"
+  },
+  {
+   "fieldname": "age_group",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Age Group",
+   "options": "\n19 - 25\n26 - 30\n31 - 35\n36 - 40\n41 - 45\n46 - 50\n51 - 59\n60 And Above"
+  },
+  {
+   "fieldname": "column_break_0mvt9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "deputy",
+   "fieldtype": "Link",
+   "label": "Deputy ID",
+   "options": "Member"
+  },
+  {
+   "fieldname": "exco",
+   "fieldtype": "Link",
+   "label": "Exco ID",
+   "options": "Member"
+  },
+  {
+   "fieldname": "small_group_whatsapp_link",
+   "fieldtype": "Data",
+   "label": "Small Group WhatsApp Link",
+   "options": "URL"
+  },
+  {
+   "fieldname": "moi_whatsapp_link",
+   "fieldtype": "Data",
+   "label": "MoI WhatsApp Link",
+   "options": "URL"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-06-08 17:49:22.627916",
+ "modified_by": "Administrator",
+ "module": "Moi",
+ "name": "MoI Small Group",
+ "name_case": "Title Case",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

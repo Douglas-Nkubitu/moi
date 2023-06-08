@@ -18,7 +18,8 @@
   "mobile_no",
   "email",
   "column_break_nn7qd",
-  "member_group",
+  "age_group",
+  "moi_small_group",
   "designation",
   "salutation",
   "assembly",
@@ -140,25 +141,30 @@
    "read_only": 1
   },
   {
-   "fieldname": "member_group",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Member Group",
-   "options": "Member Group"
-  },
-  {
    "fieldname": "designation",
    "fieldtype": "Link",
    "label": "Designation",
    "options": "Designation",
+   "reqd": 1
+  },
+  {
+   "fieldname": "moi_small_group",
+   "fieldtype": "Link",
+   "label": "MoI Small Group",
+   "options": "MoI Small Group"
+  },
+  {
+   "fieldname": "age_group",
+   "fieldtype": "Select",
+   "label": "Age Group",
+   "options": "\n19 - 25\n26 - 30\n31 - 35\n36 - 40\n41 - 45\n46 - 50\n51 - 59\n60 And Above",
    "reqd": 1
   }
  ],
  "icon": "fa fa-user",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-20 10:13:05.694732",
+ "modified": "2023-06-08 16:56:58.214703",
  "modified_by": "Administrator",
  "module": "Moi",
  "name": "Member",
