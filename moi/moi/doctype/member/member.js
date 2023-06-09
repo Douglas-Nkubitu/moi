@@ -94,7 +94,7 @@ frappe.ui.form.on('Member', {
                 var whatsApp = data.small_group_whatsapp_link;
 
                 // Send an email to the specified email address
-                var subject = frappe.form_dict.get('subject');
+                var subject = frappe.get_doc("Email Template", 'Registration Acknowledgment').subject;
                 var context = {
 					'full_name': frappe.form_dict.get('full_name'),
 					'moi_small_group': teamName,
