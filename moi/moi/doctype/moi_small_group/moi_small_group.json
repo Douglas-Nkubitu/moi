@@ -121,11 +121,11 @@
   },
   {
    "fieldname": "age_group",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Age Group",
-   "options": "\n19 - 25\n26 - 30\n31 - 35\n36 - 40\n41 - 45\n46 - 50\n51 - 59\n60 And Above"
+   "options": "Age Group"
   },
   {
    "fieldname": "column_break_0mvt9",
@@ -158,7 +158,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-08 17:49:22.627916",
+ "modified": "2023-06-09 15:07:11.603585",
  "modified_by": "Administrator",
  "module": "Moi",
  "name": "MoI Small Group",

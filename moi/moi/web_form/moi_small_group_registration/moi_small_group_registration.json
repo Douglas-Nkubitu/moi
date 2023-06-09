@@ -9,6 +9,7 @@
  "apply_document_permissions": 0,
  "banner_image": "/files/1500x500.jpeg",
  "button_label": "Save",
+ "client_script": "",
  "creation": "2023-06-08 16:45:23.994914",
  "doc_type": "Member",
  "docstatus": 0,
@@ -21,7 +22,7 @@
  "max_attachment_size": 0,
  "meta_image": "/files/5839771-middle.png",
  "meta_title": "CITAM Thika Road",
- "modified": "2023-06-09 01:26:49.529298",
+ "modified": "2023-06-09 15:08:49.700694",
  "modified_by": "Administrator",
  "module": "Moi",
  "name": "moi-small-group-registration",
@@ -81,7 +82,7 @@
    "max_length": 0,
    "max_value": 0,
    "read_only": 0,
-   "reqd": 0,
+   "reqd": 1,
    "show_in_filter": 0
   },
   {
@@ -124,12 +125,12 @@
   {
    "allow_read_on_all_link_options": 0,
    "fieldname": "age_group",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "hidden": 0,
    "label": "Age Group",
    "max_length": 0,
    "max_value": 0,
-   "options": "\n19 - 25\n26 - 30\n31 - 35\n36 - 40\n41 - 45\n46 - 50\n51 - 59\n60 And Above",
+   "options": "Age Group",
    "read_only": 0,
    "reqd": 1,
    "show_in_filter": 0
@@ -144,7 +145,7 @@
    "max_value": 0,
    "options": "MoI Small Group",
    "read_only": 0,
-   "reqd": 0,
+   "reqd": 1,
    "show_in_filter": 0
   },
   {
