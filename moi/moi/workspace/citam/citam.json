@@ -61,16 +61,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Workshop Registration",
-   "link_count": 0,
-   "link_to": "Workshop Registration",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Conference Registration",
    "link_count": 0,
    "link_to": "Conference Registration",
@@ -137,7 +127,7 @@
    "type": "Link"
   }
  ],
- "modified": "2023-06-09 15:28:47.584957",
+ "modified": "2023-06-09 21:01:42.443237",
  "modified_by": "Administrator",
  "module": "Moi",
  "name": "CITAM",

@@ -22,7 +22,7 @@
  "max_attachment_size": 0,
  "meta_image": "/files/5839771-middle.png",
  "meta_title": "CITAM Thika Road",
- "modified": "2023-06-09 15:08:49.700694",
+ "modified": "2023-06-09 20:45:37.532497",
  "modified_by": "Administrator",
  "module": "Moi",
  "name": "moi-small-group-registration",
@@ -34,7 +34,7 @@
  "show_sidebar": 0,
  "success_message": "Thank you for Registering!\nAn Email will be sent to you with more information!\nRegards, Men of Impact.",
  "success_title": "Successfully Registered!",
- "success_url": "/login",
+ "success_url": "/home",
  "title": "Men of Impact Registration",
  "web_form_fields": [
   {
