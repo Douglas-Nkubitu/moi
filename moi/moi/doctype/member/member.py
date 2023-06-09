@@ -19,18 +19,8 @@ class Member(Document):
 
 	def validate_email(self):
 		validate_email_address(self.email.strip(), True)
-
-@frappe.whitelist()
-def assign_group(age_group):
-    # Fetch the team_name and leader_email based on the age_group
-    doc = frappe.get_doc('MoI Small Group', {'age_group': age_group})
-
-    return {
-        'team_name': doc.team_name,
-		'team_leader': doc.team_leader,
-		'leader_email': doc.leader_email	
-    }
-
+                
+                
 @frappe.whitelist()
 def get_moi_small_group_data(moi_small_group):
     moi_small_group_data = frappe.get_doc("MoI Small Group", moi_small_group)
@@ -49,3 +39,34 @@ def send_email(recipients, subject, content):
         subject=subject,
         content=content
     )
+
+@frappe.whitelist()
+def allocate_small_group(age_group):
+    # Retrieve all the MoI Small Group records linked to the age group
+    moi_small_groups = frappe.get_all(
+        'MoI Small Group',
+        filters={'age_group': age_group},
+        fields=['team_name']
+    )
+
+    # Get the count of existing member records linked to each MoI Small Group
+    member_records = frappe.get_all(
+        'Member',
+        filters={'age_group': age_group},
+        fields=['moi_small_group']
+    )
+    group_counts = {}
+    for record in member_records:
+        group = record.get("moi_small_group")
+        if group in group_counts:
+            group_counts[group] += 1
+        else:
+            group_counts[group] = 1
+
+    # Sort the MoI Small Groups based on the count of existing member records
+    sorted_groups = sorted(moi_small_groups, key=lambda group: group_counts.get(group["team_name"], 0))
+
+    # Determine the next available MoI Small Group
+    next_group = sorted_groups[0] if sorted_groups else None
+
+    return next_group

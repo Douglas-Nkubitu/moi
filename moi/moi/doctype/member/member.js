@@ -52,20 +52,19 @@ frappe.ui.form.on('Member', {
         // Get the selected age_group from the Member DocType
         var ageGroup = frm.doc.age_group;
 
-        // Make an AJAX request to fetch the team_name based on the age_group
-        frappe.call({
-            method: 'moi.moi.doctype.member.member.assign_group',
-            args: {
-                age_group: ageGroup
-            },
-            callback: function(response) {
-                // Handle the response
-                if (response && response.message) {
-                    // Update the moi_small_group field in the Member DocType
-                    frm.set_value('moi_small_group', response.message.team_name);
-                }
-            }
-        });
+		frappe.call({
+			method: 'moi.moi.doctype.member.member.allocate_small_group',
+			args: {
+				age_group: ageGroup
+			},
+			callback: function(response){
+				if (response && response.message){
+
+					frm.set_value('moi_small_group', response.message.team_name);
+
+				}
+			}
+		})
     }
 });
 
@@ -74,9 +73,9 @@ frappe.ui.form.on('Member', {
         // Fetch the necessary data for email
         var ageGroup = frm.doc.age_group;
 
-			// Make an AJAX request to fetch the team_name, leader_email, full_name, phone_no, and email from the Member DocType
+		// Make an AJAX request to fetch the team_name, leader_email, full_name, phone_no, and email from the Member DocType
 		frappe.call({
-			method: 'moi.moi.doctype.member.member.assign_group',
+			method: 'moi.moi.doctype.member.member.allocate_small_group',
 			args: {
 				age_group: ageGroup
 			},
@@ -88,7 +87,7 @@ frappe.ui.form.on('Member', {
 
 					// Send an email to the leader_email with member information using the email template
 					frappe.call({
-						method: 'frappe.email.doctype.email_template.email_template.get_email',
+						method: 'frappe.email.doctype.email_template.email_template.get_email_template',
 						args: {
 							template_name: 'New Member Registration',  // email template name
 							doc: frm.doc,
