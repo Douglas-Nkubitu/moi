@@ -22,12 +22,14 @@ class Member(Document):
 
 @frappe.whitelist()
 def assign_group(age_group):
-	# Fetch the team_name based on the age_group
-	team_name = frappe.db.get_value('MoI Small Group', {'age_group': age_group}, 'team_name')
+    # Fetch the team_name and leader_email based on the age_group
+    doc = frappe.get_doc('MoI Small Group', {'age_group': age_group})
 
-	return {
-		'team_name': team_name
-	}
+    return {
+        'team_name': doc.team_name,
+		'team_leader': doc.team_leader,
+		'leader_email': doc.leader_email	
+    }
 
 @frappe.whitelist()
 def get_moi_small_group_data(moi_small_group):

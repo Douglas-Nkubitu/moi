@@ -46,6 +46,7 @@ frappe.ui.form.on('Member', {
 // 	});
 // }
 
+
 frappe.ui.form.on('Member', {
     age_group: function(frm) {
         // Get the selected age_group from the Member DocType
@@ -66,6 +67,77 @@ frappe.ui.form.on('Member', {
             }
         });
     }
+});
+
+frappe.ui.form.on('Member', {
+    after_save: function(frm) {
+        // Fetch the necessary data for email
+        var ageGroup = frm.doc.age_group;
+
+			// Make an AJAX request to fetch the team_name, leader_email, full_name, phone_no, and email from the Member DocType
+		frappe.call({
+			method: 'moi.moi.doctype.member.member.assign_group',
+			args: {
+				age_group: ageGroup
+			},
+			callback: function(response) {
+				// Handle the response
+				if (response && response.message) {
+					// Update the moi_small_group field in the Member DocType
+					frm.set_value('moi_small_group', response.message.team_name);
+
+					// Send an email to the leader_email with member information using the email template
+					frappe.call({
+						method: 'frappe.email.doctype.email_template.email_template.get_email',
+						args: {
+							template_name: 'New Member Registration',  // email template name
+							doc: frm.doc,
+							print_html: true
+						},
+						callback: function(emailResponse) {
+							// Handle the email response
+							if (emailResponse && emailResponse.message) {
+								// Extract the email subject and content from the response
+								var subject = frappe.get_doc("Email Template", 'New Member Registration').subject;
+
+								// Define the context with member information
+								var context = {
+									team_leader: response.message.team_leader,
+									full_name: frm.doc.full_name,
+									mobile_no: frm.doc.mobile_no,
+									email: frm.doc.email,
+									moi_small_group: frm.doc.moi_small_group
+								};
+
+								// Get the rendered email content using the context
+								var content = frappe.render_template(emailResponse.message.content, context);
+
+								// Send the email to the leader_email
+								frappe.call({
+									method: 'frappe.email.queue.flush',
+									args: {
+										recipients: response.message.leader_email,
+										subject: subject,
+										content: content
+									},
+									callback: function(sendEmailResponse) {
+										// Handle the send email response
+										if (sendEmailResponse && !sendEmailResponse.exc) {
+											// Display success message
+											frappe.msgprint("Email sent successfully!");
+										} else {
+											// Display error message
+											frappe.msgprint("Failed to send email.");
+										}
+									}
+								});
+							}
+						}
+					});
+				}
+			}
+		});
+	}
 });
 
 
@@ -103,7 +175,7 @@ frappe.ui.form.on('Member', {
 					'leader_email': leaderEmail,
 					'small_group_whatsapp_link': whatsApp
 				};
-				var message = frappe.render_template(frappe.get_doc("Email Template", 'Registration Acknowledgment').response, context, is_path = False);
+				var message = frappe.render_template(frappe.get_doc("Email Template", 'Registration Acknowledgment').response, context);
 			
 				frappe.call({
                     method: 'moi.moi.doctype.member.member.send_email',
@@ -113,8 +185,7 @@ frappe.ui.form.on('Member', {
                         content: message
                     },
                     callback: function(response) {
-                        // Handle the response if needed
-                        // For example, show a success message
+                        // show a success message
                         frappe.msgprint('Email sent successfully!');
                     }
                 });
