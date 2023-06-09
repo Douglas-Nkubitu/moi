@@ -20,7 +20,7 @@ class Member(Document):
 	def validate_email(self):
 		validate_email_address(self.email.strip(), True)
                 
-                
+
 @frappe.whitelist()
 def get_moi_small_group_data(moi_small_group):
     moi_small_group_data = frappe.get_doc("MoI Small Group", moi_small_group)
@@ -40,7 +40,7 @@ def send_email(recipients, subject, content):
         content=content
     )
 
-@frappe.whitelist()
+@frappe.whitelist(allow_guest=True)
 def allocate_small_group(age_group):
     # Retrieve all the MoI Small Group records linked to the age group
     moi_small_groups = frappe.get_all(
