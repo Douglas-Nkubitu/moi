@@ -28,3 +28,22 @@ def assign_group(age_group):
 	return {
 		'team_name': team_name
 	}
+
+@frappe.whitelist()
+def get_moi_small_group_data(moi_small_group):
+    moi_small_group_data = frappe.get_doc("MoI Small Group", moi_small_group)
+    return {
+        'team_name': moi_small_group_data.team_name,
+        'leader_name': moi_small_group_data.team_leader,
+        'leader_phone_number': moi_small_group_data.leader_phone_number,
+        'leader_email': moi_small_group_data.leader_email,
+        'small_group_whatsapp_link': moi_small_group_data.small_group_whatsapp_link
+    }
+
+@frappe.whitelist()
+def send_email(recipients, subject, content):
+    frappe.sendmail(
+        recipients=recipients,
+        subject=subject,
+        content=content
+    )
