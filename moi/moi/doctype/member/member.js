@@ -126,6 +126,12 @@ frappe.ui.form.on('Member', {
 										recipients: leader_email,
 										subject: message.subject,
 										content: message
+									},
+									callback: function(r) {
+										if(r.exc) {
+										msgprint(r.exc);
+											return;
+										}
 									}
 								});
 							}
@@ -187,6 +193,12 @@ frappe.ui.form.on('Member', {
 										recipients: email,
 										subject: message.subject,
 										content: message
+									},
+									callback: function(r) {
+										if(r.exc) {
+										msgprint(r.exc);
+											return;
+										}
 									}
 								});
 							}
