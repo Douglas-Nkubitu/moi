@@ -124,6 +124,7 @@ frappe.ui.form.on('Member', {
 									method: 'moi.moi.doctype.member.member.send_email',
 									args: {
 										recipients: leader_email,
+										subject: message.subject,
 										content: message
 									},
 									callback: function(r) {
@@ -190,6 +191,7 @@ frappe.ui.form.on('Member', {
 									method: 'moi.moi.doctype.member.member.send_email',
 									args: {
 										recipients: email,
+										subject: message.subject,
 										content: message
 									},
 									callback: function(r) {
