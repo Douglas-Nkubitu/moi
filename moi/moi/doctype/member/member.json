@@ -36,8 +36,7 @@
    "label": "First Name",
    "oldfieldname": "first_name",
    "oldfieldtype": "Data",
-   "reqd": 1,
-   "unique": 1
+   "reqd": 1
   },
   {
    "fieldname": "middle_name",
@@ -167,7 +166,7 @@
  "icon": "fa fa-user",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-09 15:05:13.070963",
+ "modified": "2023-06-17 11:06:28.240766",
  "modified_by": "Administrator",
  "module": "Moi",
  "name": "Member",
