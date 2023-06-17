@@ -125,7 +125,7 @@ frappe.ui.form.on('Member', {
 									args: {
 										recipients: leader_email,
 										subject: message.subject,
-										content: message
+										content: message.message
 									},
 									callback: function(r) {
 										if(r.exc) {
@@ -192,7 +192,7 @@ frappe.ui.form.on('Member', {
 									args: {
 										recipients: email,
 										subject: message.subject,
-										content: message
+										content: message.message
 									},
 									callback: function(r) {
 										if(r.exc) {
