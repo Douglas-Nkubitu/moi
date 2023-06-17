@@ -29,8 +29,8 @@ frappe.ui.form.on('Member', {
 
 // //Send SMS
 // var send_sms = function (frm) {
-//     var message = "Thank you for Registering " + frm.doc.full_name +" Welcome to" + frm.doc.assembly +" !";
-// 	console.log(message);
+//     var message = "Thank you " + frm.doc.full_name +" for Registering. Welcome to " + frm.doc.moi_small_group +"!";
+// 	// frappe.msgprint(message)
 // 		frappe.call({
 // 		method: "frappe.core.doctype.sms_settings.sms_settings.send_sms",
 // 		args: {
@@ -70,64 +70,45 @@ frappe.ui.form.on('Member', {
 
 frappe.ui.form.on('Member', {
     after_save: function(frm) {
-        // Fetch the necessary data for email
-        var ageGroup = frm.doc.age_group;
+		// Get the Moi Small Group field value
+        var moiSmallGroup = frm.doc.moi_small_group;
 
-		// Make an AJAX request to fetch the team_name, leader_email, full_name, phone_no, and email from the Member DocType
-		frappe.call({
-			method: 'moi.moi.doctype.member.member.allocate_small_group',
-			args: {
-				age_group: ageGroup
-			},
-			callback: function(response) {
-				// Handle the response
-				if (response && response.message) {
-					// Update the moi_small_group field in the Member DocType
-					frm.set_value('moi_small_group', response.message.team_name);
+        // Fetch data from the Moi Small Group document
+        frappe.call({
+            method: 'moi.moi.doctype.member.member.get_moi_small_group_data',
+            args: {
+                moi_small_group: moiSmallGroup
+            },
+            callback: function(response) {
+				if (response && response.message){
+					
+					// Fetch Leader name from the Moi Small Group
+					var team_leader = response.message.leader_name
+					// frappe.msgprint(String(team_leader))
+					// Fetch Leader email from the Moi Small Group
+					var leader_email = response.message.leader_email
 
-					// Send an email to the leader_email with member information using the email template
 					frappe.call({
-						method: 'frappe.email.doctype.email_template.email_template.get_email_template',
+						method: 'moi.moi.doctype.member.member.get_email_template',
 						args: {
 							template_name: 'New Member Registration',  // email template name
 							doc: frm.doc,
-							print_html: true
+							leader_name: team_leader
 						},
 						callback: function(emailResponse) {
 							// Handle the email response
 							if (emailResponse && emailResponse.message) {
-								// Extract the email subject and content from the response
-								var subject = frappe.get_doc("Email Template", 'New Member Registration').subject;
-
-								// Define the context with member information
-								var context = {
-									team_leader: response.message.team_leader,
-									full_name: frm.doc.full_name,
-									mobile_no: frm.doc.mobile_no,
-									email: frm.doc.email,
-									moi_small_group: frm.doc.moi_small_group
-								};
-
-								// Get the rendered email content using the context
-								var content = frappe.render_template(emailResponse.message.content, context);
-
+								
+								//Fetch email message from response
+								var message = emailResponse.message
+								
 								// Send the email to the leader_email
 								frappe.call({
-									method: 'frappe.email.queue.flush',
+									method: 'moi.moi.doctype.member.member.send_email',
 									args: {
-										recipients: response.message.leader_email,
-										subject: subject,
-										content: content
-									},
-									callback: function(sendEmailResponse) {
-										// Handle the send email response
-										if (sendEmailResponse && !sendEmailResponse.exc) {
-											// Display success message
-											frappe.msgprint("Email sent successfully!");
-										} else {
-											// Display error message
-											frappe.msgprint("Failed to send email.");
-										}
+										recipients: leader_email,
+										subject: message.subject,
+										content: message
 									}
 								});
 							}
@@ -139,13 +120,9 @@ frappe.ui.form.on('Member', {
 	}
 });
 
-
 frappe.ui.form.on('Member', {
-    validate: function(frm) {
-        // Get the email field value
-        var email = frm.doc.email;
-
-        // Get the Moi Small Group field value (assuming it's a Link field)
+    after_save: function(frm) {
+        // Get the Moi Small Group field value
         var moiSmallGroup = frm.doc.moi_small_group;
 
         // Fetch data from the Moi Small Group document
@@ -155,40 +132,51 @@ frappe.ui.form.on('Member', {
                 moi_small_group: moiSmallGroup
             },
             callback: function(response) {
-                var data = response.message;
+				if (response && response.message){
+				
+					// Fetch Leader email from the Moi Small Group
+					var leader_name = response.message.leader_name
+					// Fetch Leader phone number from the Moi Small Group
+					var leader_phone_number = response.message.leader_phone_number
+					// Fetch Leader email from the Moi Small Group
+					var leader_email = response.message.leader_email
+					// Fetch small group whataspp from the Moi Small Group
+					var small_group_whatsapp_link = response.message.small_group_whatsapp_link
 
-                // Extract the required fields from the Moi Small Group document
-                var teamName = data.team_name;
-                var leaderName = data.team_leader;
-                var leaderPhone = data.leader_phone_number;
-                var leaderEmail = data.leader_email;
-                var whatsApp = data.small_group_whatsapp_link;
+					frappe.call({
+						method: 'moi.moi.doctype.member.member.get_email_template',
+						args: {
+							template_name: 'Registration Acknowledgment',  // email template name
+							doc: frm.doc,
+							leader_name: leader_name,
+							leader_phone_number: leader_phone_number,
+							leader_email: leader_email,
+							small_group_whatsapp_link: small_group_whatsapp_link
 
-                // Send an email to the specified email address
-                var subject = frappe.get_doc("Email Template", 'Registration Acknowledgment').subject;
-                var context = {
-					'full_name': frappe.form_dict.get('full_name'),
-					'moi_small_group': teamName,
-					'team_leader': leaderName,
-					'leader_phone_number': leaderPhone,
-					'leader_email': leaderEmail,
-					'small_group_whatsapp_link': whatsApp
-				};
-				var message = frappe.render_template(frappe.get_doc("Email Template", 'Registration Acknowledgment').response, context);
-			
-				frappe.call({
-                    method: 'moi.moi.doctype.member.member.send_email',
-                    args: {
-                        recipients: email,
-                        subject: subject,
-                        content: message
-                    },
-                    callback: function(response) {
-                        // show a success message
-                        frappe.msgprint('Email sent successfully!');
-                    }
-                });
-            }
+						},
+						callback: function(emailResponse) {
+							// Handle the email response
+							if (emailResponse && emailResponse.message) {
+
+								// Get the email field value
+								var email = frm.doc.email;
+								//Fetch email message from response
+								var message = emailResponse.message
+
+								// Send the email to the leader_email
+								frappe.call({
+									method: 'moi.moi.doctype.member.member.send_email',
+									args: {
+										recipients: email,
+										subject: message.subject,
+										content: message
+									}
+								});
+							}
+						}
+					});
+				}
+			}
         });
     }
 });

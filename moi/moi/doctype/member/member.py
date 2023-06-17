@@ -1,6 +1,7 @@
 # Copyright (c) 2023, Douglas Nkubitu and contributors
 # For license information, please see license.txt
 
+import json
 import frappe
 from frappe.model.document import Document
 from frappe.utils import validate_email_address, validate_phone_number
@@ -31,6 +32,25 @@ def get_moi_small_group_data(moi_small_group):
         'leader_email': moi_small_group_data.leader_email,
         'small_group_whatsapp_link': moi_small_group_data.small_group_whatsapp_link
     }
+
+@frappe.whitelist()
+def get_email_template(template_name, doc, leader_name=None, leader_phone_number=None, leader_email=None, small_group_whatsapp_link=None):
+    """Returns the processed HTML of an email template with the given doc and additional fields"""
+    if isinstance(doc, str):
+        doc = json.loads(doc)
+
+    email_template = frappe.get_doc("Email Template", template_name)
+    if leader_name:
+        doc["leader_name"] = leader_name
+    if leader_phone_number:
+        doc["leader_phone_number"] = leader_phone_number
+    if leader_email:
+        doc["leader_email"] = leader_email
+    if small_group_whatsapp_link:
+        doc["small_group_whatsapp_link"] = small_group_whatsapp_link
+
+    return email_template.get_formatted_email(doc)
+
 
 @frappe.whitelist()
 def send_email(recipients, subject, content):
