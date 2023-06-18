@@ -42,83 +42,68 @@ frappe.ui.form.on('Member', {
 
 frappe.ui.form.on('Member', {
 	after_save: function (frm) {
-        send_sms(frm);
-    }
-});
+		var send_sms = function (frm) {
+			// Fetch data from the Moi Small Group document
+			frappe.call({
+				method: 'moi.moi.doctype.member.member.get_moi_small_group_data',
+				args: {
+					moi_small_group: frm.doc.moi_small_group
+				},
+				callback: function(response) {
+					if (response && response.message) {
+						// Fetch Leader name from the Moi Small Group
+						var leader_name = response.message.leader_name;
+						// Fetch Leader phone number from the Moi Small Group
+						var leader_phone_number = response.message.leader_phone_number;
 
-//Send SMS to the leader
-var send_sms = function (frm) {
-	// Get the Moi Small Group field value
-	var moiSmallGroup = frm.doc.moi_small_group;
-
-	  // Fetch data from the Moi Small Group document
-	  frappe.call({
-		method: 'moi.moi.doctype.member.member.get_moi_small_group_data',
-		args: {
-			moi_small_group: moiSmallGroup
-		},
-		callback: function(response) {
-			if (response && response.message){
-
-				// Fetch Leader name from the Moi Small Group
-				var leader_name = response.message.leader_name
-				// Fetch Leader name from the Moi Small Group
-				var leader_phone_number = response.message.leader_phone_number
-				
-				var message = "Hi " + leader_name + ", " + frm.doc.full_name + " has been allocated your Group, Kindly reach out via " + frm.doc.mobile_no +".";
-				// frappe.msgprint(message)
-					frappe.call({
-					method: "frappe.core.doctype.sms_settings.sms_settings.send_sms",
-					args: {
-						receiver_list: [leader_phone_number],
-						msg: message,
-					},
-					callback: function(r) {
-						if(r.exc) {
-						msgprint(r.exc);
-							return;
-						}
+						var message = "Hi " + leader_name + ", " + frm.doc.full_name + " has been allocated your Group, Kindly reach out via " + frm.doc.mobile_no + ".";
+						// frappe.msgprint(message)
+						frappe.call({
+							method: "frappe.core.doctype.sms_settings.sms_settings.send_sms",
+							args: {
+								receiver_list: [leader_phone_number],
+								msg: message,
+							},
+							callback: function(r) {
+								if (r.exc) {
+									msgprint(r.exc);
+									return;
+								}
+							}
+						});
 					}
-				});
-			}
-		}
-	});
-}
+				}
+			});
+		};
 
-frappe.ui.form.on('Member', {
-    after_save: function(frm) {
-		// Get the Moi Small Group field value
-        var moiSmallGroup = frm.doc.moi_small_group;
+		send_sms(frm);
 
-        // Fetch data from the Moi Small Group document
-        frappe.call({
-            method: 'moi.moi.doctype.member.member.get_moi_small_group_data',
-            args: {
-                moi_small_group: moiSmallGroup
-            },
-            callback: function(response) {
-				if (response && response.message){
-					
+		// Fetch data from the Moi Small Group document for sending email
+		frappe.call({
+			method: 'moi.moi.doctype.member.member.get_moi_small_group_data',
+			args: {
+				moi_small_group: frm.doc.moi_small_group
+			},
+			callback: function(response) {
+				if (response && response.message) {
 					// Fetch Leader name from the Moi Small Group
-					var team_leader = response.message.leader_name
-				
+					var team_leader = response.message.leader_name;
 					// Fetch Leader email from the Moi Small Group
-					var leader_email = response.message.leader_email
+					var leader_email = response.message.leader_email;
 
 					frappe.call({
 						method: 'moi.moi.doctype.member.member.get_email_template',
 						args: {
-							template_name: 'New Member Registration',  // email template name
+							template_name: 'New Member Registration',
 							doc: frm.doc,
 							leader_name: team_leader
 						},
 						callback: function(emailResponse) {
 							// Handle the email response
 							if (emailResponse && emailResponse.message) {
-								
-								//Fetch email message from response
-								var message = emailResponse.message
-								
+								// Fetch email message from response
+								var message = emailResponse.message;
+
 								// Send the email to the leader_email
 								frappe.call({
 									method: 'moi.moi.doctype.member.member.send_email',
@@ -128,8 +113,8 @@ frappe.ui.form.on('Member', {
 										content: message.message
 									},
 									callback: function(r) {
-										if(r.exc) {
-										msgprint(r.exc);
+										if (r.exc) {
+											msgprint(r.exc);
 											return;
 										}
 									}
@@ -140,19 +125,12 @@ frappe.ui.form.on('Member', {
 				}
 			}
 		});
-	}
-});
-
-frappe.ui.form.on('Member', {
-    after_save: function(frm) {
-        // Get the Moi Small Group field value
-        var moiSmallGroup = frm.doc.moi_small_group;
-
-        // Fetch data from the Moi Small Group document
+		
+		// Fetch data from the Moi Small Group document for sending acknowledgment email
         frappe.call({
             method: 'moi.moi.doctype.member.member.get_moi_small_group_data',
             args: {
-                moi_small_group: moiSmallGroup
+                moi_small_group: frm.doc.moi_small_group
             },
             callback: function(response) {
 				if (response && response.message){
@@ -207,5 +185,5 @@ frappe.ui.form.on('Member', {
 				}
 			}
         });
-    }
-});
+	}
+})
