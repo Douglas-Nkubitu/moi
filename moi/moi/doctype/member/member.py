@@ -22,7 +22,7 @@ class Member(Document):
 		validate_email_address(self.email.strip(), True)
                 
 
-@frappe.whitelist()
+@frappe.whitelist(allow_guest=True)
 def get_moi_small_group_data(moi_small_group):
     moi_small_group_data = frappe.get_doc("MoI Small Group", moi_small_group)
     return {
@@ -33,7 +33,7 @@ def get_moi_small_group_data(moi_small_group):
         'small_group_whatsapp_link': moi_small_group_data.small_group_whatsapp_link
     }
 
-@frappe.whitelist()
+@frappe.whitelist(allow_guest=True)
 def get_email_template(template_name, doc, leader_name=None, leader_phone_number=None, leader_email=None, small_group_whatsapp_link=None):
     """Returns the processed HTML of an email template with the given doc and additional fields"""
     if isinstance(doc, str):
@@ -52,7 +52,7 @@ def get_email_template(template_name, doc, leader_name=None, leader_phone_number
     return email_template.get_formatted_email(doc)
 
 
-@frappe.whitelist()
+@frappe.whitelist(allow_guest=True)
 def send_email(recipients, subject, content):
     frappe.sendmail(
         recipients=recipients,
