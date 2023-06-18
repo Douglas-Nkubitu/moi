@@ -22,7 +22,26 @@ frappe.ui.form.on('Member', {
 });
 
 frappe.ui.form.on('Member', {
-	after_save: function (frm) {
+    age_group: function(frm) {
+        // Get the selected age_group from the Member DocType
+        var ageGroup = frm.doc.age_group;
+		frappe.call({
+			method: 'moi.moi.doctype.member.member.allocate_small_group',
+			args: {
+				age_group: ageGroup
+			},
+			callback: function(response){
+				if (response && response.message){
+					frm.set_value('moi_small_group', response.message.team_name);
+
+				}
+			}
+		})
+    }
+});
+
+frappe.ui.form.on('Member', {
+	after_insert: function (frm) {
         send_sms(frm);
     }
 });
@@ -67,26 +86,7 @@ var send_sms = function (frm) {
 }
 
 frappe.ui.form.on('Member', {
-    age_group: function(frm) {
-        // Get the selected age_group from the Member DocType
-        var ageGroup = frm.doc.age_group;
-		frappe.call({
-			method: 'moi.moi.doctype.member.member.allocate_small_group',
-			args: {
-				age_group: ageGroup
-			},
-			callback: function(response){
-				if (response && response.message){
-					frm.set_value('moi_small_group', response.message.team_name);
-
-				}
-			}
-		})
-    }
-});
-
-frappe.ui.form.on('Member', {
-    after_save: function(frm) {
+    after_insert: function(frm) {
 		// Get the Moi Small Group field value
         var moiSmallGroup = frm.doc.moi_small_group;
 
@@ -144,7 +144,7 @@ frappe.ui.form.on('Member', {
 });
 
 frappe.ui.form.on('Member', {
-    after_save: function(frm) {
+    after_insert: function(frm) {
         // Get the Moi Small Group field value
         var moiSmallGroup = frm.doc.moi_small_group;
 
