@@ -38,7 +38,7 @@ frappe.ready(function() {
 
 
 frappe.ready(function() {
-	frappe.web_form.on('moi_small_group', (field, value) => {
+	frappe.web_form.after_save('moi_small_group', (field, value) => {
 		frappe.call({
 			method: 'moi.moi.doctype.member.member.get_moi_small_group_data',
 			args: {
@@ -92,7 +92,7 @@ frappe.ready(function() {
 })
 
 frappe.ready(function() {
-	frappe.web_form.on('moi_small_group', (field, value) => {
+	frappe.web_form.after_save('moi_small_group', (field, value) => {
 		// Fetch data from the Moi Small Group document
 		frappe.call({
 			method: 'moi.moi.doctype.member.member.get_moi_small_group_data',
@@ -158,7 +158,7 @@ frappe.ready(function() {
 })
 
 frappe.ready(function(){
-	frappe.web_form.on('moi_small_group', (field, value) => {
+	frappe.web_form.after_save('moi_small_group', (field, value) => {
 		frappe.call({
 			method: 'moi.moi.doctype.member.member.get_moi_small_group_data',
 			args: {
