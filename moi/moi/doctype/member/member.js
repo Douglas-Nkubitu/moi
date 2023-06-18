@@ -41,7 +41,7 @@ frappe.ui.form.on('Member', {
 });
 
 frappe.ui.form.on('Member', {
-	after_insert: function (frm) {
+	after_save: function (frm) {
         send_sms(frm);
     }
 });
@@ -86,7 +86,7 @@ var send_sms = function (frm) {
 }
 
 frappe.ui.form.on('Member', {
-    after_insert: function(frm) {
+    after_save: function(frm) {
 		// Get the Moi Small Group field value
         var moiSmallGroup = frm.doc.moi_small_group;
 
@@ -144,7 +144,7 @@ frappe.ui.form.on('Member', {
 });
 
 frappe.ui.form.on('Member', {
-    after_insert: function(frm) {
+    after_save: function(frm) {
         // Get the Moi Small Group field value
         var moiSmallGroup = frm.doc.moi_small_group;
 
