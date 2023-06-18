@@ -38,7 +38,7 @@ frappe.ready(function() {
 
 
 frappe.ready(function() {
-	frappe.web_form.after_save('moi_small_group', (field, value) => {
+	frappe.web_form.on('moi_small_group', (field, value) => {
 		frappe.call({
 			method: 'moi.moi.doctype.member.member.get_moi_small_group_data',
 			args: {
@@ -89,10 +89,15 @@ frappe.ready(function() {
 			}
 		});
 	});
+
+	frappe.web_form.on('after_save', () => {
+        // Trigger email sending after the web form is saved
+        frappe.web_form.trigger('moi_small_group');
+    });
 })
 
 frappe.ready(function() {
-	frappe.web_form.after_save('moi_small_group', (field, value) => {
+	frappe.web_form.on('moi_small_group', (field, value) => {
 		// Fetch data from the Moi Small Group document
 		frappe.call({
 			method: 'moi.moi.doctype.member.member.get_moi_small_group_data',
@@ -155,10 +160,15 @@ frappe.ready(function() {
 			}
 		});
 	})
+
+	frappe.web_form.on('after_save', () => {
+        // Trigger email sending after the web form is saved
+        frappe.web_form.trigger('moi_small_group');
+    });
 })
 
 frappe.ready(function(){
-	frappe.web_form.after_save('moi_small_group', (field, value) => {
+	frappe.web_form.on('moi_small_group', (field, value) => {
 		frappe.call({
 			method: 'moi.moi.doctype.member.member.get_moi_small_group_data',
 			args: {
@@ -193,4 +203,9 @@ frappe.ready(function(){
 			}
 		});
 	})
+
+	frappe.web_form.on('after_save', () => {
+        // Trigger SMS sending after the web form is saved
+        frappe.web_form.trigger('moi_small_group');
+    });
 })
