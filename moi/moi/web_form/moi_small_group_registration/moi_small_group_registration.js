@@ -48,10 +48,9 @@ frappe.ready(function() {
 				if (response && response.message){
 					// Fetch Leader name from the Moi Small Group
 					var team_leader = response.message.leader_name
-				
 					// Fetch Leader email from the Moi Small Group
 					var leader_email = response.message.leader_email
-					
+					// Fetch values from the web form
 					let data = frappe.web_form.get_values();
 
 					frappe.call({
@@ -90,4 +89,70 @@ frappe.ready(function() {
 			}
 		});
 	});
+})
+
+frappe.ready(function() {
+	frappe.web_form.on('moi_small_group', (field, value) => {
+		// Fetch data from the Moi Small Group document
+		frappe.call({
+			method: 'moi.moi.doctype.member.member.get_moi_small_group_data',
+			args: {
+				moi_small_group: value
+			},
+			callback: function(response) {
+				if (response && response.message){
+				
+					// Fetch Leader email from the Moi Small Group
+					var leader_name = response.message.leader_name
+					// Fetch Leader phone number from the Moi Small Group
+					var leader_phone_number = response.message.leader_phone_number
+					// Fetch Leader email from the Moi Small Group
+					var leader_email = response.message.leader_email
+					// Fetch small group whataspp from the Moi Small Group
+					var small_group_whatsapp_link = response.message.small_group_whatsapp_link
+					// Fetch values from the web form
+					let data = frappe.web_form.get_values();
+
+					frappe.call({
+						method: 'moi.moi.doctype.member.member.get_email_template',
+						args: {
+							template_name: 'Registration Acknowledgment',  // email template name
+							doc: data,
+							leader_name: leader_name,
+							leader_phone_number: leader_phone_number,
+							leader_email: leader_email,
+							small_group_whatsapp_link: small_group_whatsapp_link
+
+						},
+						callback: function(emailResponse) {
+							// Handle the email response
+							if (emailResponse && emailResponse.message) {
+
+								// Get the email field value
+								var email = data.email;
+								//Fetch email message from response
+								var message = emailResponse.message
+
+								// Send the email to the member
+								frappe.call({
+									method: 'moi.moi.doctype.member.member.send_email',
+									args: {
+										recipients: email,
+										subject: message.subject,
+										content: message.message
+									},
+									callback: function(r) {
+										if(r.exc) {
+										msgprint(r.exc);
+											return;
+										}
+									}
+								});
+							}
+						}
+					});
+				}
+			}
+		});
+	})
 })
