@@ -156,3 +156,41 @@ frappe.ready(function() {
 		});
 	})
 })
+
+frappe.ready(function(){
+	frappe.web_form.on('moi_small_group', (field, value) => {
+		frappe.call({
+			method: 'moi.moi.doctype.member.member.get_moi_small_group_data',
+			args: {
+				moi_small_group: value
+			},
+			callback: function(response) {
+				if (response && response.message){
+
+					// Fetch Leader name from the Moi Small Group
+					var leader_name = response.message.leader_name
+					// Fetch Leader name from the Moi Small Group
+					var leader_phone_number = response.message.leader_phone_number
+					// Fetch values from the web form
+					let data = frappe.web_form.get_values();
+					
+					var message = "Hi " + leader_name + ", " + data.full_name + " has been allocated your Group, Kindly reach out via " + data.mobile_no +".";
+					
+					frappe.call({
+						method: "frappe.core.doctype.sms_settings.sms_settings.send_sms",
+						args: {
+							receiver_list: [leader_phone_number],
+							msg: message,
+						},
+						callback: function(r) {
+							if(r.exc) {
+							msgprint(r.exc);
+								return;
+							}
+						}
+					});
+				}
+			}
+		});
+	})
+})
