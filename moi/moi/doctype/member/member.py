@@ -9,7 +9,7 @@ from frappe.utils import validate_email_address, validate_phone_number
 class Member(Document):
 	def validate(self):
 		self.set_full_name()
-		self.validate_email()
+		# self.validate_email()
 		self.validate_mobile_no()
 		
 	def set_full_name(self):
@@ -18,8 +18,8 @@ class Member(Document):
 	def validate_mobile_no(self):
 		validate_phone_number(self.mobile_no.strip(), True)
 
-	def validate_email(self):
-		validate_email_address(self.email.strip(), True)
+	# def validate_email(self):
+	# 	validate_email_address(self.email.strip(), True)
                 
 
 @frappe.whitelist(allow_guest=True)
@@ -86,7 +86,11 @@ def allocate_small_group(age_group):
     # Sort the MoI Small Groups based on the count of existing member records
     sorted_groups = sorted(moi_small_groups, key=lambda group: group_counts.get(group["team_name"], 0))
 
-    # Determine the next available MoI Small Group
-    next_group = sorted_groups[0] if sorted_groups else None
+    # Find the first group with fewer than 15 members
+    next_group = None
+    for group in sorted_groups:
+        if group_counts.get(group["team_name"], 0) < 15:
+            next_group = group
+            break
 
     return next_group
