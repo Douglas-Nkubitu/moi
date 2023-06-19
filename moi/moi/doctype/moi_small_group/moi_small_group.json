@@ -12,7 +12,6 @@
   "age_group",
   "column_break_0mvt9",
   "small_group_whatsapp_link",
-  "moi_whatsapp_link",
   "section_break_wjel6",
   "leader",
   "team_leader",
@@ -148,17 +147,11 @@
    "fieldtype": "Data",
    "label": "Small Group WhatsApp Link",
    "options": "URL"
-  },
-  {
-   "fieldname": "moi_whatsapp_link",
-   "fieldtype": "Data",
-   "label": "MoI WhatsApp Link",
-   "options": "URL"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-09 15:07:11.603585",
+ "modified": "2023-06-19 10:52:29.314230",
  "modified_by": "Administrator",
  "module": "Moi",
  "name": "MoI Small Group",
