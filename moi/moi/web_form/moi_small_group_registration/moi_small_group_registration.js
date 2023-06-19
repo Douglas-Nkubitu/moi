@@ -38,11 +38,11 @@ frappe.ready(function() {
 
 
 frappe.ready(function() {
-    frappe.web_form.on('moi_small_group', (field, value) => {
+    frappe.web_form.on('after_save', () => {
         frappe.call({
             method: 'moi.moi.doctype.member.member.get_moi_small_group_data',
             args: {
-                moi_small_group: value
+                moi_small_group: frappe.web_form.get_value('moi_small_group')
             },
             callback: function(response) {
                 if (response && response.message) {
@@ -144,10 +144,5 @@ frappe.ready(function() {
                 }
             }
         });
-    });
-
-    frappe.web_form.on('after_save', () => {
-        // Trigger SMS & Email sending after the web form is saved
-        frappe.web_form.trigger('moi_small_group');
     });
 })
