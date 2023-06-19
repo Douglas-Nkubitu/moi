@@ -66,7 +66,7 @@ frappe.ready(function() {
                                 // Fetch email message from response
                                 var message = emailResponse.message;
 
-                                // Send the email to the leader_email
+								// Send the email to the leader_email
                                 frappe.call({
                                     method: 'moi.moi.doctype.member.member.send_email',
                                     args: {
@@ -126,21 +126,21 @@ frappe.ready(function() {
                         }
                     });
 
-                    var message = "Hi " + leader_name + ", " + data.full_name + " has been allocated to your group. Kindly reach out via " + data.mobile_no + ".";
+                    // var message = "Hi " + leader_name + ", " + data.full_name + " has been allocated to your group. Kindly reach out via " + data.mobile_no + ".";
 					
-                    frappe.call({
-                        method: "frappe.core.doctype.sms_settings.sms_settings.send_sms",
-                        args: {
-                            receiver_list: [leader_phone_number],
-                            msg: message
-                        },
-                        callback: function(r) {
-                            if (r.exc) {
-                                msgprint(r.exc);
-                                return;
-                            }
-                        }
-                    });
+                    // frappe.call({
+                    //     method: "frappe.core.doctype.sms_settings.sms_settings.send_sms",
+                    //     args: {
+                    //         receiver_list: [leader_phone_number],
+                    //         msg: message
+                    //     },
+                    //     callback: function(r) {
+                    //         if (r.exc) {
+                    //             msgprint(r.exc);
+                    //             return;
+                    //         }
+                    //     }
+                    // });
                 }
             }
         });
