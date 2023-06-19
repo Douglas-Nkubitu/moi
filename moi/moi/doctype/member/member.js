@@ -42,41 +42,41 @@ frappe.ui.form.on('Member', {
 
 frappe.ui.form.on('Member', {
 	after_save: function (frm) {
-		var send_sms = function (frm) {
-			// Fetch data from the Moi Small Group document
-			frappe.call({
-				method: 'moi.moi.doctype.member.member.get_moi_small_group_data',
-				args: {
-					moi_small_group: frm.doc.moi_small_group
-				},
-				callback: function(response) {
-					if (response && response.message) {
-						// Fetch Leader name from the Moi Small Group
-						var leader_name = response.message.leader_name;
-						// Fetch Leader phone number from the Moi Small Group
-						var leader_phone_number = response.message.leader_phone_number;
+		// var send_sms = function (frm) {
+		// 	// Fetch data from the Moi Small Group document
+		// 	frappe.call({
+		// 		method: 'moi.moi.doctype.member.member.get_moi_small_group_data',
+		// 		args: {
+		// 			moi_small_group: frm.doc.moi_small_group
+		// 		},
+		// 		callback: function(response) {
+		// 			if (response && response.message) {
+		// 				// Fetch Leader name from the Moi Small Group
+		// 				var leader_name = response.message.leader_name;
+		// 				// Fetch Leader phone number from the Moi Small Group
+		// 				var leader_phone_number = response.message.leader_phone_number;
 
-						var message = "Hi " + leader_name + ", " + frm.doc.full_name + " has been allocated your Group, Kindly reach out via " + frm.doc.mobile_no + ".";
-						// frappe.msgprint(message)
-						frappe.call({
-							method: "frappe.core.doctype.sms_settings.sms_settings.send_sms",
-							args: {
-								receiver_list: [leader_phone_number],
-								msg: message,
-							},
-							callback: function(r) {
-								if (r.exc) {
-									msgprint(r.exc);
-									return;
-								}
-							}
-						});
-					}
-				}
-			});
-		};
+		// 				var message = "Hi " + leader_name + ", " + frm.doc.full_name + " has been allocated your Group, Kindly reach out via " + frm.doc.mobile_no + ".";
+		// 				// frappe.msgprint(message)
+		// 				frappe.call({
+		// 					method: "frappe.core.doctype.sms_settings.sms_settings.send_sms",
+		// 					args: {
+		// 						receiver_list: [leader_phone_number],
+		// 						msg: message,
+		// 					},
+		// 					callback: function(r) {
+		// 						if (r.exc) {
+		// 							msgprint(r.exc);
+		// 							return;
+		// 						}
+		// 					}
+		// 				});
+		// 			}
+		// 		}
+		// 	});
+		// };
 
-		send_sms(frm);
+		// send_sms(frm);
 
 		// Fetch data from the Moi Small Group document for sending email
 		frappe.call({
@@ -125,7 +125,7 @@ frappe.ui.form.on('Member', {
 				}
 			}
 		});
-		
+
 		// Fetch data from the Moi Small Group document for sending acknowledgment email
         frappe.call({
             method: 'moi.moi.doctype.member.member.get_moi_small_group_data',
