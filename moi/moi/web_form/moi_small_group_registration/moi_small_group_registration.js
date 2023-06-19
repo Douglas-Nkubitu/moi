@@ -38,7 +38,7 @@ frappe.ready(function() {
 
 
 frappe.ready(function() {
-    frappe.web_form.on('after_save', () => {
+    frappe.web_form.after_save = () => {
         frappe.call({
             method: 'moi.moi.doctype.member.member.get_moi_small_group_data',
             args: {
@@ -107,7 +107,7 @@ frappe.ready(function() {
                                 // Fetch email message from response
                                 var message = emailResponse.message;
 
-                                // Send the email to the member
+								// Send the email to the member
                                 frappe.call({
                                     method: 'moi.moi.doctype.member.member.send_email',
                                     args: {
@@ -127,7 +127,7 @@ frappe.ready(function() {
                     });
 
                     var message = "Hi " + leader_name + ", " + data.full_name + " has been allocated to your group. Kindly reach out via " + data.mobile_no + ".";
-
+					
                     frappe.call({
                         method: "frappe.core.doctype.sms_settings.sms_settings.send_sms",
                         args: {
@@ -144,5 +144,5 @@ frappe.ready(function() {
                 }
             }
         });
-    });
+    }
 })
