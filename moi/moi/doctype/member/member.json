@@ -100,7 +100,8 @@
   {
    "fieldname": "age",
    "fieldtype": "Int",
-   "label": "Age"
+   "label": "Age",
+   "reqd": 1
   },
   {
    "default": "CITAM-.YYYY.-",
@@ -127,6 +128,7 @@
    "label": "Email Address",
    "oldfieldname": "email_id",
    "oldfieldtype": "Data",
+   "reqd": 1,
    "search_index": 1
   },
   {
@@ -164,7 +166,7 @@
  "icon": "fa fa-user",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-19 14:16:08.842689",
+ "modified": "2023-06-23 15:38:57.019504",
  "modified_by": "Administrator",
  "module": "Moi",
  "name": "Member",

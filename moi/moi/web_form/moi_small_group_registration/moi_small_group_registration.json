@@ -190,7 +190,7 @@
   },
   {
    "allow_read_on_all_link_options": 0,
-   "default": "Citam Thika Road",
+   "default": "CITAM Thika Road",
    "fieldname": "assembly",
    "fieldtype": "Link",
    "hidden": 0,
