@@ -9,7 +9,7 @@ from frappe.utils import validate_email_address, validate_phone_number
 class Member(Document):
 	def validate(self):
 		self.set_full_name()
-		# self.validate_email()
+		self.validate_email()
 		self.validate_mobile_no()
 		
 	def set_full_name(self):
@@ -18,8 +18,8 @@ class Member(Document):
 	def validate_mobile_no(self):
 		validate_phone_number(self.mobile_no.strip(), True)
 
-	# def validate_email(self):
-	# 	validate_email_address(self.email.strip(), True)
+	def validate_email(self):
+		validate_email_address(self.email.strip(), True)
                 
 
 @frappe.whitelist(allow_guest=True)
