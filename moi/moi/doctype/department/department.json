@@ -70,13 +70,14 @@
   {
    "fieldname": "old_parent",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Old Parent"
   }
  ],
  "icon": "fa fa-sitemap",
  "is_tree": 1,
  "links": [],
- "modified": "2023-05-20 02:15:47.981023",
+ "modified": "2023-07-25 19:36:52.022147",
  "modified_by": "Administrator",
  "module": "Moi",
  "name": "Department",
