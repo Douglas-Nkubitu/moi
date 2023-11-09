@@ -86,10 +86,10 @@ def allocate_small_group(age_group):
     # Sort the MoI Small Groups based on the count of existing member records
     sorted_groups = sorted(moi_small_groups, key=lambda group: group_counts.get(group["team_name"], 0))
 
-    # Find the first group with fewer than 15 members
+    # Find the first group with fewer than 20 members
     next_group = None
     for group in sorted_groups:
-        if group_counts.get(group["team_name"], 0) < 15:
+        if group_counts.get(group["team_name"], 0) < 20:
             next_group = group
             break
 
